@@ -4,6 +4,7 @@ from test.page_object.pages.home import Home
 from test.page_object.pages.authentication import Authentication
 from test.page_object.pages.registration import Registration
 import unittest
+import time
 
 
 class Smoke(EnvironmentSetupSmoke):
@@ -13,6 +14,10 @@ class Smoke(EnvironmentSetupSmoke):
         # Using the driver instance created in EnvironmentSetupSmoke
         driver = self.driver
         url = self.url
+        # random email
+        import time
+        email = 'mtest' + str(int(time.time())) + '@mtest.com'
+        print(email)
 
         print('\n######################################################')
         print('#   HOME PAGE')
@@ -64,7 +69,7 @@ class Smoke(EnvironmentSetupSmoke):
         else:
             print('Authentication page not loaded')
         try:
-            auth.create_account('mtest@mtest.com')
+            auth.create_account(email)
             auth.submit_create_acc()
         except Exception as e:
             print("Exception occurred ", e)
@@ -84,9 +89,14 @@ class Smoke(EnvironmentSetupSmoke):
         else:
             print('Registration page not loaded')
 
-        reg.fill_reg_form('TESTFIRST', 'TESTLAST')
-        import time
-        time.sleep(5)
+        reg.verify_email_prepopulated(email)
+
+        # TODO PULL PASSWORD FROM bashrc as env var !!!
+        reg.fill_reg_form('2', 'Jeanfirst', 'Testlast', '12345', '25', '6', '2018',
+                          'Jeanfirst', 'Testlast', 'Fashion Inc.', '1 Market St.', 'Suite 5',
+                          'Denver', 'Colorado', '33333', 'United States', '5556667777', 'Jeany')
+        reg.submit_reg()
+        
 
 if __name__ == '__main__':
     unittest.main()

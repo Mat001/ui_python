@@ -25,7 +25,7 @@ class Locator:
     entitlement_female = '#id_gender2'
     fname = '#customer_firstname'
     lname = '#customer_lastname'
-    # email field should be prepopulated (can test this with assertion)
+    email = '#email'
     passw_create = '#passwd'
     day = '#days'
     month = '#months'
