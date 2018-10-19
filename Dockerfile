@@ -1,6 +1,10 @@
 # see this: https://qxf2.com/blog/preparing-a-docker-image-for-running-selenium-tests/
 # see: https://www.blazemeter.com/blog/how-to-run-selenium-tests-in-docker
 # see firefox image from dockerhub: https://hub.docker.com/r/selenium/standalone-firefox/
+
+# TODO NOT WORKING - CONSIDER PULLING FROM DOCKERHUB or invest time to build own (make sure geckodriver is included,
+# TODO browser,...)
+
 FROM python:3.6-alpine
 
 # maybe I'll need to specify ENV var for password here?
