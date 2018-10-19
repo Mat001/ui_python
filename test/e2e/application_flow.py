@@ -1,4 +1,4 @@
-from test.test_base.environment_setup_flow import EnvironmentSetupSmoke
+from test.test_base.environment_setup import EnvironmentSetupSmoke
 from test.page_object.locators import Locator
 from test.page_object.pages.home import Home
 from test.page_object.pages.authentication import Authentication

@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 testtools = "*"
 selenium = "*"
-fixtures = "*"
 
 [dev-packages]
 

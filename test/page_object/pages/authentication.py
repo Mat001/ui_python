@@ -1,16 +1,9 @@
-"""Registration page"""
+"""Authentication page"""
 
-import selenium
-from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from time import sleep
 from selenium.common.exceptions import TimeoutException, NoSuchElementException, InvalidSelectorException
 
 from test.page_object.locators import Locator
-
-# from test.page_object.locators import Locator
 
 
 class Authentication:
