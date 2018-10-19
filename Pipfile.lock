@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "d798554a966cedfaaa32c5c637d04fc0bd698482a13f00fcc69214d303324039"
+            "sha256": "24b1c2797d16c1f4cee5b3a558fefe65d56f7f0e24fc7d9f1a2627be4ac1214e"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -35,6 +35,7 @@
                 "sha256:2a551b0421101de112d9497fb5f6fd25e5019391c0fbec9bad591ecae981420d",
                 "sha256:fcf0d60234f1544da717a9738325812de1f42c2fa085e2d9252d8fff5712b2ef"
             ],
+            "index": "pypi",
             "version": "==3.0.0"
         },
         "linecache2": {
@@ -46,10 +47,10 @@
         },
         "pbr": {
             "hashes": [
-                "sha256:1be135151a0da949af8c5d0ee9013d9eafada71237eb80b3ba8896b4f12ec5dc",
-                "sha256:cf36765bf2218654ae824ec8e14257259ba44e43b117fd573c8d07a9895adbdd"
+                "sha256:ab94783019179bf48f5784edc63f5bc8328ec5ff93f33591567f266d21ac7323",
+                "sha256:bfcff1a3878eebf559392c2130a17f612a03f96a0d44c3559d9c1e62a4235a2d"
             ],
-            "version": "==4.3.0"
+            "version": "==5.0.0"
         },
         "python-mimeparse": {
             "hashes": [
@@ -97,10 +98,10 @@
         },
         "urllib3": {
             "hashes": [
-                "sha256:a68ac5e15e76e7e5dd2b8f94007233e01effe3e50e8daddf69acfd81cb686baf",
-                "sha256:b5725a0bd4ba422ab0e66e89e030c806576753ea3ee08554382c14e685d117b5"
+                "sha256:41c3db2fc01e5b907288010dec72f9d0a74e37d6994e6eb56849f59fea2265ae",
+                "sha256:8819bba37a02d143296a4d032373c4dd4aca11f6d4c9973335ca75f9c8475f59"
             ],
-            "version": "==1.23"
+            "version": "==1.24"
         }
     },
     "develop": {}

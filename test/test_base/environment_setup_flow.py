@@ -27,6 +27,7 @@ class EnvironmentSetupSmoke(unittest.TestCase):
         cls.driver.get(cls.url)
         cls.driver.set_page_load_timeout(20)
 
+
     @classmethod
     def tearDownClass(cls):
         """Teardown method to close browser and quit."""

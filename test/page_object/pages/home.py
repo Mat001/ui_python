@@ -39,3 +39,6 @@ class Home:
     # methods
     def verify_title(self, expected, actual):
         assert expected == actual
+
+    def click_signIn(self):
+        self.signIn.click()

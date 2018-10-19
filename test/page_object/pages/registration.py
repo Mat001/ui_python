@@ -126,7 +126,6 @@ class Registration:
     # methods
     def verify_email_prepopulated(self, chosen_at_acc_creation):
         currently_displayed = self.email.get_attribute('value')
-        print(currently_displayed, chosen_at_acc_creation)
         assert currently_displayed == chosen_at_acc_creation
 
     def choose_entitlement(self, gender):
