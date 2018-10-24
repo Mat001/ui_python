@@ -3,7 +3,7 @@
 version: '2'
 services:
   firefox:
-    image: selenium/node-firefox-debug
+    image: selenium/node-firefox
     volumes:
       - /dev/shm:/dev/shm
     depends_on:
@@ -12,7 +12,7 @@ services:
       HUB_HOST: hub
 
   chrome:
-    image: selenium/node-chrome-debug
+    image: selenium/node-chrome
     volumes:
       - /dev/shm:/dev/shm
     depends_on:
