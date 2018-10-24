@@ -18,7 +18,7 @@
 3. ###### Run e2e tests by running tox
     `tox -v firefox, chrome`
 
-    To run specific browser enter `tox -v -e firefox` or `tox -v -e chrome`
+    To run specific browser type in terminal `tox -v -e firefox` or `tox -v -e chrome`
     
 To run tests locally (not using docker) uncomment section "local" in setUpClass() method in EnvironmentSetup class.
 Comment out "remote" section.
