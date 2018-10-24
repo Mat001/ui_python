@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 testtools = "*"
 selenium = "*"
+tox = "*"
 
 [dev-packages]
 

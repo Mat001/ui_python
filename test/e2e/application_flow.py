@@ -4,17 +4,15 @@ from test.page_object.pages.home import Home
 from test.page_object.pages.authentication import Authentication
 from test.page_object.pages.registration import Registration
 import unittest
-import os
 
 
 class Smoke(EnvironmentSetupSmoke):
 
-   def test_application_flow(self):
+    def test_application_flow(self):
 
         # Using the driver instance created in EnvironmentSetupSmoke
         driver = self.driver
         url = self.url
-        self.passw = os.environ['PASSW']
 
         # randomize email
         import time
@@ -50,7 +48,7 @@ class Smoke(EnvironmentSetupSmoke):
         self.assertTrue(home.get_signIn.is_displayed())
         print('Authentication Link displaying', '(' + home.get_signIn.text + ')')
         home.click_signIn()
-        driver.implicitly_wait(5)   # wait until page has loaded
+        driver.implicitly_wait(5)  # wait until page has loaded
 
         # calling authentication page object to proceed with creating account flow
         auth = Authentication(driver)
@@ -72,18 +70,20 @@ class Smoke(EnvironmentSetupSmoke):
         driver.implicitly_wait(10)
         print('Loading registration page...')
 
-        self.assertTrue(reg.get_reg_txt.text == 'YOUR PERSONAL INFORMATION', msg='YOUR PERSONAL INFORMATION text not found.')
+        self.assertTrue(reg.get_reg_txt.text == 'YOUR PERSONAL INFORMATION',
+                        msg='YOUR PERSONAL INFORMATION text not found.')
         print('Registration page loaded.', '(page heading: ', reg.get_reg_txt.text + ')')
         reg.verify_email_prepopulated(email)
 
         try:
-            reg.fill_reg_form('2', 'Jeanfirst', 'Testlast', self.passw, '25', '6', '2018',
+            reg.fill_reg_form('2', 'Jeanfirst', 'Testlast', '12345', '25', '6', '2018',
                               'Jeanfirst', 'Testlast', 'Fashion Inc.', '1 Market St.', 'Suite 5',
                               'Denver', 'Colorado', '33333', 'United States', '5556667777', 'Jeany')
+
             reg.submit_reg()
         except Exception as e:
             print(e)
 
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(warnings='ignore')

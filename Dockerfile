@@ -27,3 +27,11 @@ RUN ln -s /usr/bin/geckodriver && chmod 777 /usr/bin/geckodriver
 COPY . .
 
 CMD [ "python", "-m", "unittest", "discover" ]
+
+
+
+# have a script to tell Docker to download sel;enium image
+# then run the image
+
+
+# SEE THIS blogpost: https://www.blazemeter.com/blog/how-to-run-selenium-tests-in-docker
