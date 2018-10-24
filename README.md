@@ -7,12 +7,10 @@
     install pipenv, docker, docker-compose
 
 2. ###### Docker images
-
-    Pull down the hub and nodes from docker-hub:
-        Make sure docker (docker daemon) is running.
-        `docker pull selenium/hub selenium/node-chrome selenium/node-firefox`
-    Bring up the hub and the nodes by running `docker-compose up`.
-        This will activate them and register the nodes (remote browser VMs) with the hub.
+    Pull down the hub and nodes images from docker-hub by running docker-compose,  
+    (Make sure docker (docker daemon) is running first):  
+    run `docker-compose up`  
+    Nodes (isolated browser VMs) will become activated and registered with the hub.
 
 3. ###### Run e2e tests by running tox
     
