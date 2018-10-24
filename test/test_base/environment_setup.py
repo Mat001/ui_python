@@ -31,7 +31,7 @@ class EnvironmentSetupSmoke(unittest.TestCase):
             cls.driver = webdriver.Remote(command_executor='http://localhost:4444/wd/hub',
                                           desired_capabilities=DesiredCapabilities.CHROME)
         else:
-            raise Exception('unknown browser {}'.format(os.environ['BROWSER']))
+            raise Exception('Unknown browser {}'.format(os.environ['BROWSER']))
 
         #######################################
         # locally
