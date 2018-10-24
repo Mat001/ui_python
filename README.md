@@ -16,7 +16,10 @@
         This will activate them and register the nodes (remote browser VMs) with the hub.
 
 3. ###### Run e2e tests by running tox
-    `tox -v firefox, chrome`
+    
+    Go into virtualenv `pipenv shell`    
+
+    Run tests with `tox -v firefox, chrome`
 
     To run specific browser type in terminal `tox -v -e firefox` or `tox -v -e chrome`
     
