@@ -25,6 +25,7 @@ Download and add geckodriver and chromedriver paths to the driver instance.
 
 
 Things to improve:
+- to remove redundant @property getter methods (and call locators directly from each page object)
 - hide password in test credentials
 - logs for chrome test don't show in docker-compose logs because of an error
 - currently remote hub and nodes are located on localhost (demo purposes). 

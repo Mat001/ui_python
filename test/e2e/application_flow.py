@@ -3,6 +3,8 @@ from test.page_object.locators import Locator
 from test.page_object.pages.home import Home
 from test.page_object.pages.authentication import Authentication
 from test.page_object.pages.registration import Registration
+from test.page_object.pages.myaccount import MyAccount
+from test.page_object.pages.category import Category
 import unittest
 
 
@@ -55,7 +57,7 @@ class Smoke(EnvironmentSetupSmoke):
         print('Loading authentication page...')
         driver.implicitly_wait(5)
 
-        self.assertTrue(auth.get_auth_txt.text == 'AUTHENTICATION', msg='AUTHENTICATION text not found or displayed.')
+        self.assertEquals(auth.get_auth_txt.text, 'AUTHENTICATION', msg='AUTHENTICATION text not found or displayed.')
         print('Authentication page loaded.', '(page heading:', auth.get_auth_txt.text + ')')
         try:
             auth.create_account(email)
@@ -83,6 +85,24 @@ class Smoke(EnvironmentSetupSmoke):
             reg.submit_reg()
         except Exception as e:
             print(e)
+
+        print('\n#   MY ACCOUNT PAGE    ####################\n')
+
+        myacc = MyAccount(driver)
+        driver.implicitly_wait(10)
+        print('Loading my account page...')
+
+        # verify we're on my account page
+        self.assertEquals(driver.current_url, Locator.page_url, msg='Current page URL incorrect.')
+        self.assertEquals(myacc.get_myaccount_text.text, 'MY ACCOUNT', msg='MY ACCOUNT text not seen on this page.')
+        print('My Account page confirmed.')
+        myacc.click_women()
+
+        print('\n#   CATEGORIES PAGE    ####################\n')
+
+        cat = Category(driver)
+        driver.implicitly_wait(10)
+        print('Loading category page...')
 
 
 if __name__ == '__main__':
