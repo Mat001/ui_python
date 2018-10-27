@@ -43,5 +43,8 @@ class Locator:
     address_alias = '#alias'
     submit_account = '#submitAccount'
 
-
+    # my account
+    myaccount_text = '.page-heading'
+    page_url = 'http://automationpractice.com/index.php?controller=my-account'
+    women_link_text = 'Women'
 
