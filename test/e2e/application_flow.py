@@ -5,6 +5,8 @@ from test.page_object.pages.authentication import Authentication
 from test.page_object.pages.registration import Registration
 from test.page_object.pages.myaccount import MyAccount
 from test.page_object.pages.category import Category
+from test.page_object.pages.product import Product
+from test.page_object.pages.selection_popup import SelectionPopUp
 import unittest
 
 
@@ -78,9 +80,14 @@ class Smoke(EnvironmentSetupSmoke):
         reg.verify_email_prepopulated(email)
 
         try:
-            reg.fill_reg_form('2', 'Jeanfirst', 'Testlast', '12345', '25', '6', '2018',
-                              'Jeanfirst', 'Testlast', 'Fashion Inc.', '1 Market St.', 'Suite 5',
-                              'Denver', 'Colorado', '33333', 'United States', '5556667777', 'Jeany')
+            reg.fill_reg_form(entitlement_param='2', fname_param='Jeanfirst',
+                              lname_param='Testlast', passw_param='12345', day='25',
+                              month='6', year='2018', fname_address_param='Jeanfirst',
+                              lname_address_param='Testlast', company='Fashion Inc.',
+                              address1_param='1 Market St.', address2_param='Suite 5',
+                              city_param='Denver', state_param='Colorado',
+                              zip_param='33333', country_param='United States',
+                              phone_mobile_param='5556667777', alias_param='Jeany')
 
             reg.submit_reg()
         except Exception as e:
@@ -93,8 +100,10 @@ class Smoke(EnvironmentSetupSmoke):
         print('Loading my account page...')
 
         # verify we're on my account page
-        self.assertEquals(driver.current_url, Locator.page_url, msg='Current page URL incorrect.')
-        self.assertEquals(myacc.get_myaccount_text.text, 'MY ACCOUNT', msg='MY ACCOUNT text not seen on this page.')
+        self.assertEquals(driver.current_url, Locator.page_url,
+                          msg='Current page URL incorrect.')
+        self.assertEquals(myacc.get_myaccount_text.text, 'MY ACCOUNT',
+                          msg='MY ACCOUNT text not seen on this page.')
         print('My Account page confirmed.')
         myacc.click_women()
 
@@ -103,6 +112,53 @@ class Smoke(EnvironmentSetupSmoke):
         cat = Category(driver)
         driver.implicitly_wait(10)
         print('Loading category page...')
+
+        # on Women page click blue color on product Faded Short Sleeve T-shirts to
+        cat.select_blue_tshirt()
+
+        print('\n#   PRODUCT PAGE    ####################\n')
+        product = Product(driver)
+        driver.implicitly_wait(10)
+        product.add_to_cart(quantity=2, size='M')
+
+        print('\n#   SELECTION POP-UP PAGE    ####################\n')
+        popup = SelectionPopUp(driver)
+        # wait for ajax pop-up window to appear - done in page object with EC wait
+        self.assertTrue(popup.get_prod_confirm.is_displayed())
+        self.assertEqual(popup.get_prod_confirm.get_attribute(
+            'innerText'), 'Faded Short Sleeve T-shirts')
+        self.assertTrue(popup.get_proceed_button.is_displayed())
+        popup.proceed()
+
+        print('\n#   ORDER SUMMARY PAGE    ####################\n')
+        driver.implicitly_wait(10)
+        # store price, quantity and total
+
+
+        # click proceed to checkout
+
+        # wait for address page to load (sign-in page is skipped because already signed
+        #  in)
+        # click proceed to checkout
+
+        # wait for order-shipping page to load
+        # check checkbox Terms of service
+
+        # wait for order-payment page to load
+        # assert unit price x quantity matches the total - again
+        # click on Pay by bank wire
+        # same page-payment, click Confirm my order
+        # same page-payment assert confirmation info says Your order on My Store is
+        # complete.
+        # assert total is unit price + quantity + tax
+
+        # click on Back to Orders
+        # assert text Here are the orders you've placed since your account was created.
+
+
+
+
+
 
 
 if __name__ == '__main__':
