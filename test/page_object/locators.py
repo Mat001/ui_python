@@ -61,43 +61,39 @@ class Locator:
     proceed_popup = '//*[@id="layer_cart"]/div[1]/div[2]/div[4]/a'
 
     # order summary
-    unit_price = 'price'    # class
-    quantity_order = '//*[@id="product_1_4_0_113190"]/td[5]/input[2]'   # xpath
-    # quantity_order = 'cart_quantity_input form-control grey'    # class
-    total_price_products = 'total_product_price_1_4_113190'    # id
+    unit_price = "// *[contains( @ id, 'product_price_')]/span"
+    quantity_order = '#product_1_4_0_113198 > td.cart_quantity.text-center > ' \
+                     'input.cart_quantity_input.form-control.grey'    # css
+    total_price_products = 'total_product'    # id
     shipping = 'total_shipping'     # id
     tax = 'total_tax'   # id
     total_price = 'total_price'     # id
     proceed_to_address = '//*[@id="center_column"]/p[2]/a[1]'
 
-    # order summary - address
-    delivery_address = 'address_address1 address_address2'  # class - use to verify
-    biling_fullname = 'address_firstname address_lastname'  # class - use to verify
+    # address
+    delivery_address = '#address_delivery > li.address_address1.address_address2'
+    billing_fullname = '#address_invoice > li.address_firstname.address_lastname'
     proceed_to_shipping = 'processAddress'  # name
 
-    # order summary - shipping
-    carrier_title = 'carrier_title' # class - get text to match 'Choose a shipping option for this address: Jeany'
+    # shipping
     tos_checkbox = 'cgv'    # id
     proceed_to_payment = 'processCarrier'   # name
 
-    # order summary - payment
+    # payment
     bankwire = 'bankwire'   # class
 
-
-    # oredr summary - pre-confirming payment
+    # pre-confirmation
     bankwire_text = 'page-subheading'   # class - use to confirm on the page
-    button_confirm_order = 'button btn btn-default button-medium'   # class
+    button_confirm_order = '#cart_navigation > button'   # css
 
     # order confirmation
-    order_confirmation_text = 'page-heading'    # class - use to assert text is visible:
-    #  ORDER CONFIRMATION
-    confirmed_total = '//*[@id="center_column"]/div/span/strong'    # compare with
-    # stored total_price
-    bankwire_account_holder = '//*[@id="center_column"]/div/strong[1]'  # should match Pradeep Macharla
-    button_back_to_orders = 'button-exclusive btn btn-default'  # class
+    confirmation_text = 'page-heading'    # class - use to assert text is visible:
+    confirmed_total = '//*[@id="center_column"]/div/span/strong'    # compare with stored
+    button_back_to_orders = '#center_column > p > a'  # css
 
     # order history
-    history_text = '//*[@id="center_column"]/p' # confirm on history page by matching text
+    history_text = '#center_column > h1'
+    presence_of_invoice = '//*[@id="order-list"]/tbody/tr[1]/td[6]/a'
 
 
 

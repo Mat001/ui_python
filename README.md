@@ -31,5 +31,6 @@ Things to improve:
 - hide password in test credentials
 - logs for chrome test don't show in docker-compose logs because of an error
 - currently remote hub and nodes are located on localhost (demo purposes). 
+- set exception conditions so failures stop the e2e test
 To move them to an IP away from local machine. 
 

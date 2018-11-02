@@ -24,22 +24,22 @@ class EnvironmentSetupSmoke(unittest.TestCase):
         # remotely
         #######################################
         # remotely (on selenium grid, needs docker compose to run first)
-        # if os.getenv('BROWSER') == 'firefox':
-        #     cls.driver = webdriver.Remote(command_executor='http://localhost:4444/wd/hub',
-        #                                   desired_capabilities=DesiredCapabilities.FIREFOX)
-        # elif os.getenv('BROWSER') == 'chrome':
-        #     cls.driver = webdriver.Remote(command_executor='http://localhost:4444/wd/hub',
-        #                                   desired_capabilities=DesiredCapabilities.CHROME)
-        # else:
-        #     raise Exception('Unknown browser {}'.format(os.environ['BROWSER']))
+        if os.getenv('BROWSER') == 'firefox':
+            cls.driver = webdriver.Remote(command_executor='http://localhost:4444/wd/hub',
+                                          desired_capabilities=DesiredCapabilities.FIREFOX)
+        elif os.getenv('BROWSER') == 'chrome':
+            cls.driver = webdriver.Remote(command_executor='http://localhost:4444/wd/hub',
+                                          desired_capabilities=DesiredCapabilities.CHROME)
+        else:
+            raise Exception('Unknown browser {}'.format(os.environ['BROWSER']))
 
         #######################################
         # locally
         #######################################
         # firefox
-        path_to_geckodriver = '/home/m/applications/geckodriver'
-        cls.driver = webdriver.Firefox(executable_path=path_to_geckodriver)
-        cls.driver.maximize_window()
+        # path_to_geckodriver = '/home/m/applications/geckodriver'
+        # cls.driver = webdriver.Firefox(executable_path=path_to_geckodriver)
+        # cls.driver.maximize_window()
 
         # chrome
         # path_to_chromedriver = '/home/m/applications/chromedriver'
