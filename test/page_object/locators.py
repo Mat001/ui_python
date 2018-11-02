@@ -48,3 +48,74 @@ class Locator:
     page_url = 'http://automationpractice.com/index.php?controller=my-account'
     women_link_text = 'Women'
 
+    # category
+    product_shirt = '#color_2'    # pick shirt with id color 2
+
+    # product
+    quantity = '#quantity_wanted'
+    size = '#group_1'   # dropdown, select size
+    button_add_to_cart = '#add_to_cart > button'
+
+    # selection pop up
+    popup_prod_confirm = 'layer_cart_product_title'
+    proceed_popup = '//*[@id="layer_cart"]/div[1]/div[2]/div[4]/a'
+
+    # order summary
+    unit_price = "// *[contains( @ id, 'product_price_')]/span"
+    quantity_order = '#product_1_4_0_113198 > td.cart_quantity.text-center > ' \
+                     'input.cart_quantity_input.form-control.grey'    # css
+    total_price_products = 'total_product'    # id
+    shipping = 'total_shipping'     # id
+    tax = 'total_tax'   # id
+    total_price = 'total_price'     # id
+    proceed_to_address = '//*[@id="center_column"]/p[2]/a[1]'
+
+    # address
+    delivery_address = '#address_delivery > li.address_address1.address_address2'
+    billing_fullname = '#address_invoice > li.address_firstname.address_lastname'
+    proceed_to_shipping = 'processAddress'  # name
+
+    # shipping
+    tos_checkbox = 'cgv'    # id
+    proceed_to_payment = 'processCarrier'   # name
+
+    # payment
+    bankwire = 'bankwire'   # class
+
+    # pre-confirmation
+    bankwire_text = 'page-subheading'   # class - use to confirm on the page
+    button_confirm_order = '#cart_navigation > button'   # css
+
+    # order confirmation
+    confirmation_text = 'page-heading'    # class - use to assert text is visible:
+    confirmed_total = '//*[@id="center_column"]/div/span/strong'    # compare with stored
+    button_back_to_orders = '#center_column > p > a'  # css
+
+    # order history
+    history_text = '#center_column > h1'
+    presence_of_invoice = '//*[@id="order-list"]/tbody/tr[1]/td[6]/a'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
