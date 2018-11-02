@@ -1,5 +1,8 @@
 ## UI selenium test framework in Python.
 
+End to end test of a purchase of a commercial product on a test website 
+(http://automationpractice.com/index.php).
+
 ### Instructions to run
 
 1. ###### Prerequisites
@@ -20,7 +23,8 @@
     
 To run tests locally (not using docker) uncomment section "local" in setUpClass() 
 method in EnvironmentSetup class. Disable (comment out) "remote" section. Download 
-geckodriver and chromedriver and add their paths to each driver instance. 
+geckodriver and chromedriver and add their paths to each driver instance. Requires 
+Python 3.
 
 
 Things to improve:
