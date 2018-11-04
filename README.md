@@ -19,9 +19,9 @@ End to end test of a purchase of a commercial product on a test website
 3. ###### Run e2e tests by running tox
     
     Go into virtualenv `pipenv shell`    
-    Run tests with `tox -v firefox, chrome`
+    Run tests with `tox -v firefox, chrome`  
     To run specific browser type in terminal `tox -v -e firefox` or `tox -v -e chrome`   
-    Tests will run in headlessly in docker container. For logs see docker-compose console.
+    Tests will run headlessly in docker container. For logs see docker-compose console.
     
 To run tests locally (not using docker) uncomment section "local" in setUpClass() 
 method in EnvironmentSetup class. Disable (comment out) "remote" section. Download 
