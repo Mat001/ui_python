@@ -29,9 +29,8 @@ Python 3.
 
 Things to improve:
 - to remove redundant @property getter methods (and call locators directly from each page object)
-- add WebdriverFactory class to deal with multiple browsers (instead of tox and env variable)
- master - for that need to change unittest to Pytest and use parameterization
-- hide password in test credentials
+- add WebdriverFactory class to deal with multiple browsers (instead of tox and env variable) - for that need to change unittest to Pytest and use parameterization
+- hide password in test credentials (env var?)
 - logs for chrome test don't show in docker-compose logs because of an error
 - currently remote hub and nodes are located on localhost (demo purposes). To move them to
  an IP away from local machine. 
