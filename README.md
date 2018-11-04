@@ -8,6 +8,7 @@ End to end test of a purchase of a commercial product on a test website
 1. ###### Prerequisites
     
     install pipenv, docker, docker-compose
+    Requires Python 3.
 
 2. ###### Docker images
     Pull down the hub and node images from docker-hub by running docker-compose,  
@@ -23,8 +24,8 @@ End to end test of a purchase of a commercial product on a test website
     
 To run tests locally (not using docker) uncomment section "local" in setUpClass() 
 method in EnvironmentSetup class. Disable (comment out) "remote" section. Download 
-geckodriver and chromedriver and add their paths to each driver instance. Requires 
-Python 3.
+geckodriver and chromedriver and add their paths to each driver instance. Then run
+`python -W ignore -m unittest test/e2e/application_flow.py`
 
 
 Things to improve:
