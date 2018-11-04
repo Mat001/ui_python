@@ -37,5 +37,6 @@ Things to improve:
 - currently remote hub and nodes are located on localhost (demo purposes). To move them to
  an IP away from local machine. 
 - set exception conditions so test run stops when exceptions are raised
+- set functionality to easily toggle between running tests in docker (remotely) and locally
  
 
