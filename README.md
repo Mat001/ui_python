@@ -14,7 +14,7 @@ End to end test of a purchase of a commercial product on a test website
     Pull down the hub and node images from docker-hub by running docker-compose,  
     (Make sure docker (docker daemon) is running first):  
     run `docker-compose up`  
-    Nodes (isolated browser VMs) will become activated and registered with the hub.
+    This will activate nodes (isolated browser VMs) and register them with the hub.
 
 3. ###### Run e2e tests by running tox
     
