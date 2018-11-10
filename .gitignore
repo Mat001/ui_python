@@ -16,3 +16,5 @@ eggs/
 *.egg-info/
 *.egg
 *.tox
+*.pytest_cache
+.pytest_cache/
