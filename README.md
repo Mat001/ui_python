@@ -8,7 +8,7 @@ End to end test of a purchase of a commercial product on a test website
 1. ###### Prerequisites
     
     install pipenv, docker, docker-compose  
-    Requires Python 3.
+    Requires Python >= 3.6.
 
 2. ###### Docker images
     Pull down the hub and node images from docker-hub by running docker-compose,  
