@@ -1,12 +1,12 @@
 """order summary page"""
 
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import TimeoutException, NoSuchElementException, \
+from selenium.common.exceptions import NoSuchElementException, \
     InvalidSelectorException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from test.page_object.locators import Locator
+from page_object.locators import Locator
 
 
 class OrderSummary:
@@ -16,7 +16,7 @@ class OrderSummary:
 
         try:
             self.unit_price = driver.find_element(By.XPATH, Locator.unit_price)
-            # use EC only on this element, other will be visible as well
+            # use EC only on this element, others will be visible as well
             self.total_price_products = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.ID, Locator.total_price_products)))
             self.shipping = driver.find_element(By.ID, Locator.shipping)

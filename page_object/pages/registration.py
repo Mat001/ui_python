@@ -2,8 +2,8 @@
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
-from selenium.common.exceptions import TimeoutException, NoSuchElementException, InvalidSelectorException
-from test.page_object.locators import Locator
+from selenium.common.exceptions import NoSuchElementException, InvalidSelectorException
+from page_object.locators import Locator
 
 
 class Registration:
