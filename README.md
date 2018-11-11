@@ -21,7 +21,8 @@ End to end test of a purchase of a commercial product on a test website
     Go into virtualenv `pipenv shell`    
     Run tests with `python -m pytest -s -v`  
     To run specific browser in docker comment out appropriate browser in "driver" fixture 
-    in test_application_flow.py file.   
+    in webdriver_factory.py file (for local browsers set correct path to geckodriver 
+    and chromedriver).   
     Tests will run headlessly in docker container. For logs see docker-compose console.
     
 To run tests locally (not using docker) uncomment Firefox or Chrome in section "locally" 
