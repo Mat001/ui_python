@@ -1,10 +1,10 @@
 """product page"""
 
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import TimeoutException, NoSuchElementException, InvalidSelectorException
+from selenium.common.exceptions import NoSuchElementException, InvalidSelectorException
 from selenium.webdriver.support.ui import Select
 
-from test.page_object.locators import Locator
+from page_object.locators import Locator
 
 
 class Product:

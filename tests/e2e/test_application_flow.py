@@ -1,77 +1,44 @@
 import pytest
 import datetime
 import time
-from selenium import webdriver
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-from test.page_object.locators import Locator
-from test.test_data.data import TestData
-from test.page_object.pages.home import Home
-from test.page_object.pages.authentication import Authentication
-from test.page_object.pages.registration import Registration
-from test.page_object.pages.myaccount import MyAccount
-from test.page_object.pages.category import Category
-from test.page_object.pages.product import Product
-from test.page_object.pages.selection_popup import SelectionPopUp
-from test.page_object.pages.order_summary import OrderSummary
-from test.page_object.pages.address import Address
-from test.page_object.pages.shipping import Shipping
-from test.page_object.pages.payment import Payment
-from test.page_object.pages.pre_confirmation import PreConfirmation
-from test.page_object.pages.confirmation import Confirmation
-from test.page_object.pages.history import History
+from page_object.locators import Locator
+from tests.test_data.data import TestData
+from page_object.pages.home import Home
+from page_object.pages.authentication import Authentication
+from page_object.pages.registration import Registration
+from page_object.pages.myaccount import MyAccount
+from page_object.pages.category import Category
+from page_object.pages.product import Product
+from page_object.pages.selection_popup import SelectionPopUp
+from page_object.pages.order_summary import OrderSummary
+from page_object.pages.address import Address
+from page_object.pages.shipping import Shipping
+from page_object.pages.payment import Payment
+from page_object.pages.pre_confirmation import PreConfirmation
+from page_object.pages.confirmation import Confirmation
+from page_object.pages.history import History
+
+from base.webdriver_factory import WebDriverFactory
 
 
-url = 'http://automationpractice.com/index.php'
 td = TestData()
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope='session')
 def driver():
     """This fixture acts as a setup method and contains the browser setup attributes.
         Teardown setup starts below yield.
     """
-    #######################################
-    # remotely
-    #######################################
-    # remotely (on selenium grid, needs docker compose to run first)
-    # driver = webdriver.Remote(command_executor='http://localhost:4444/wd/hub',
-    #                           desired_capabilities=DesiredCapabilities.FIREFOX)
 
-    # driver = webdriver.Remote(command_executor='http://localhost:4444/wd/hub',
-    #                           desired_capabilities=DesiredCapabilities.CHROME)
-
-    #######################################
-    # locally
-    #######################################
-    # firefox
-    path_to_geckodriver = '/home/m/applications/geckodriver'
-    driver = webdriver.Firefox(executable_path=path_to_geckodriver)
-    driver.maximize_window()
-
-    # chrome
-    # path_to_chromedriver = '/home/m/applications/chromedriver'
-    # driver = webdriver.Chrome(executable_path=path_to_chromedriver)
-    # driver.maximize_window()
-
-    print('-------------------------------------------------')
-    print('Run started at ' + str(datetime.datetime.now()))
-    browser_name = driver.capabilities['browserName']
-    if browser_name == 'chrome':
-        print('Browser: ', browser_name, driver.capabilities['version'])
-    else:
-        print('Browser: ', browser_name, driver.capabilities['browserVersion'])
-
-    driver.implicitly_wait(20)
-
-    driver.get(url)
-    driver.set_page_load_timeout(20)
+    wdf = WebDriverFactory()
+    driver = wdf.get_webdriver_instance()
 
     yield driver
     # Teardown to close browser and quit
     if driver is not None:
-        print('Run completed at ' + str(datetime.datetime.now()))
         driver.quit()
+        print('\nRun completed at ' + str(datetime.datetime.now()))
 
 
 def test_application_flow(driver):
@@ -101,7 +68,7 @@ def test_application_flow(driver):
     assert home.get_contact_us.is_displayed(), 'ContactUs link NOT displayed.'
     print('Found Contact Us link - ', home.get_contact_us.get_attribute('href'))
 
-    assert url == driver.current_url
+    assert driver.current_url == WebDriverFactory.BASE_URL
     print('URL successfully points to Home page -', driver.current_url)
 
     #################################################################################

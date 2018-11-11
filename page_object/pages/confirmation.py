@@ -6,7 +6,7 @@ from selenium.common.exceptions import TimeoutException, NoSuchElementException,
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from test.page_object.locators import Locator
+from page_object.locators import Locator
 
 
 class Confirmation:

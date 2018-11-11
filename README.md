@@ -16,7 +16,7 @@ End to end test of a purchase of a commercial product on a test website
     run `docker-compose up`  
     This will activate nodes (isolated browser VMs) and register them with the hub.
 
-3. ###### Run e2e tests by running tox
+3. ###### Run tests
     
     Go into virtualenv `pipenv shell`    
     Run tests with `python -m pytest -s -v`  
@@ -32,7 +32,6 @@ instance. Then run `python -m pytest -v -s`
 
 Things to improve:
 - to remove redundant @property getter methods (and call locators directly from each page object)
-- add WebdriverFactory class to deal with multiple browsers (instead of tox and env variable)
 - hide password in test credentials (env var?)
 - logs for chrome test don't show in docker-compose logs because of an error
 - currently remote hub and nodes are located on localhost (demo purposes). To move them to
