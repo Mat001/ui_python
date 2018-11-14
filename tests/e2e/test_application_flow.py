@@ -25,22 +25,6 @@ from base.webdriver_factory import WebDriverFactory
 td = TestData()
 
 
-@pytest.fixture(scope='session')
-def driver():
-    """This fixture acts as a setup method and contains the browser setup attributes.
-        Teardown setup starts below yield.
-    """
-
-    wdf = WebDriverFactory()
-    driver = wdf.get_webdriver_instance()
-
-    yield driver
-    # Teardown to close browser and quit
-    if driver is not None:
-        driver.quit()
-        print('\nRun completed at ' + str(datetime.datetime.now()))
-
-
 def test_application_flow(driver):
     # randomize email
     email = 'mtest' + str(int(time.time())) + '@mtest.com'

@@ -18,21 +18,24 @@ End to end test of a purchase of a commercial product on a test website
 
 3. ###### Run tests
     
-    Go into virtualenv `pipenv shell`    
-    Run tests with `python -m pytest -s -v`  
-    To run specific browser in docker uncomment appropriate browser in "driver" fixture 
-    in webdriver_factory.py file (for local browsers set correct path to geckodriver 
-    and chromedriver). Only one browser can run at a time.
-    Tests will run headlessly in docker container. For logs see docker-compose console.
+    Go into virtualenv `pipenv shell` Make sure docker-compose is running.
+    Run tests with `python -m pytest -s -v`
+    This will run firefox tests in docker container.  
+    To run specific browser run:
+    `python -m pytest -s -v --browser firefox-remote` for firefox in docker
+    `python -m pytest -s -v --browser chrome-remote` for chrome in docker
+    `python -m pytest -s -v --browser firefox-local` for local firefox
+    `python -m pytest -s -v --browser chrome-local` for local chrome
     
-To run tests locally (not using docker) uncomment Firefox or Chrome in section "locally" 
-in "driver" fixture in test_application_flow.py file. Disable (comment out) "remote" 
-section. Download geckodriver and chromedriver and add their paths to each driver 
-instance. Then run `python -m pytest -v -s`
+    If `--browser` option is not specified test will default to firefox in docker.
+    
+    Tests in docker will run headlessly. For logs see docker-compose console.
 
 
 Things to improve:
-- to remove redundant @property getter methods (and call locators directly from each page object)
+- to set all browsers in docker to run with one command
+- to remove redundant @property getter methods (and call locators directly from each 
+page object)
 - hide password in test credentials (env var?)
 - logs for chrome test don't show in docker-compose logs because of an error
 - currently remote hub and nodes are located on localhost (demo purposes). To move them to
