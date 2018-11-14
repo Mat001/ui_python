@@ -18,14 +18,14 @@ End to end test of a purchase of a commercial product on a test website
 
 3. ###### Run tests
     
-    Go into virtualenv `pipenv shell` Make sure docker-compose is running.
-    Run tests with `python -m pytest -s -v`
+    Go into virtualenv `pipenv shell` Make sure docker-compose is running.  
+    Run tests with `python -m pytest -s -v`  
     This will run firefox tests in docker container.  
-    To run specific browser run:
-    `python -m pytest -s -v --browser firefox-remote` for firefox in docker
-    `python -m pytest -s -v --browser chrome-remote` for chrome in docker
-    `python -m pytest -s -v --browser firefox-local` for local firefox
-    `python -m pytest -s -v --browser chrome-local` for local chrome
+    To run specific browser run:  
+    `python -m pytest -s -v --browser firefox-remote` for firefox in docker  
+    `python -m pytest -s -v --browser chrome-remote` for chrome in docker  
+    `python -m pytest -s -v --browser firefox-local` for local firefox  
+    `python -m pytest -s -v --browser chrome-local` for local chrome  
     
     If `--browser` option is not specified test will default to firefox in docker.
     
