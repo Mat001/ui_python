@@ -6,17 +6,16 @@ from selenium.common.exceptions import NoSuchElementException, InvalidSelectorEx
 from page_object.locators import Locator
 
 
-class Home:
+class AwiTestingWaveTraining:
 
     def __init__(self, driver):
         self.driver = driver
 
         try:
-            self.awi_testing_wave_training_link = driver.find_element(By.LINK_TEXT, Locator.awi_testing_wave_training)
+            self.training_room_link = driver.find_element(By.LINK_TEXT, Locator.enter_wave_training)
         except (NoSuchElementException, InvalidSelectorException) as e:
             print(e)
 
-
     # methods
-    def click_awi_testing_wave_training_link(self):
-        self.awi_testing_wave_training_link.click()
+    def click_enter_training_room(self):
+        self.training_room_link.click()

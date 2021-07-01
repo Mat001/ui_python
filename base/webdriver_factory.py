@@ -5,7 +5,7 @@ import datetime
 
 class WebDriverFactory:
 
-    BASE_URL = 'http://automationpractice.com/index.php'
+    BASE_URL = 'https://vt.clairvision.org/vsstaging/vsMain'
 
     def __init__(self, browser):
         self.browser = browser
@@ -28,8 +28,6 @@ class WebDriverFactory:
         print('Run started at ' + str(datetime.datetime.now()))
         browser_name = driver.capabilities['browserName']
         if browser_name == 'chrome':
-            print('Browser: ', browser_name, driver.capabilities['version'])
-        else:
             print('Browser: ', browser_name, driver.capabilities['browserVersion'])
 
         driver.implicitly_wait(20)

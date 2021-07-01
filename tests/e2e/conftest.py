@@ -4,7 +4,8 @@ import datetime
 
 
 @pytest.fixture(scope="class")
-def driver(request, browser):
+def driver(request, browser='firefox-local'):        # MANUALLY ADDED BROWSER TYPE HERE - cause addoptions not working
+# def driver(request, browser):
     wdf = WebDriverFactory(browser)
     driver = wdf.get_webdriver_instance()
 
@@ -14,14 +15,15 @@ def driver(request, browser):
     yield driver
 
     if driver is not None:
-        driver.quit()
+        # driver.quit()
         print('\nRun completed at ' + str(datetime.datetime.now()))
 
 
-def pytest_addoption(parser):
-    parser.addoption("--browser", help="Type of browser")
-
-
-@pytest.fixture(scope="session")
-def browser(request):
-    return request.config.getoption("--browser")
+# TODO Fix addoption for browser - not recognized
+# def pytest_addoption(parser):
+#     parser.addoption("--browser", help="Type of browser")
+#
+#
+# @pytest.fixture(scope="session")
+# def browser(request):
+#     return request.config.getoption("--browser")
