@@ -18,3 +18,4 @@ eggs/
 *.tox
 *.pytest_cache
 .pytest_cache/
+/screenshots

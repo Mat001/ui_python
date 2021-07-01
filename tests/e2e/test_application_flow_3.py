@@ -1,43 +1,35 @@
-from selenium import webdriver
+import time
 import os
 
-import time
 from page_object.locators import Locator
+from tests.test_data.data import TestData
 from page_object.pages.login import Login
 from page_object.pages.home import Home
 from page_object.pages.awi_testing_wave_training import AwiTestingWaveTraining
 from page_object.pages.foyer import Foyer
 from page_object.pages.portal import Portal
-from helpers import get_url_parameter, get_participant_sescodes
 
 from base.webdriver_factory import WebDriverFactory
-from session_codes import participants_sescodes_dict
 
 
-# TODO - have 3 AOs in the same codebase (arbitrary number of AOs) - use cli option for username and password?
-# TODO - or place all three application flow files into the test/e2e directory and run tests in parallel!!!!!
-# TODO -DONE - fix the loop of granting access to stop when noone in the queue (that should fix the stale element exception at the end of the run )
-# TODO - script to take users out of the room back into the foyer for another round of testing
-# TODO - fix pytest_addoptions (to be able to choose browser & to add username & passw
-# TODO - test on diff browsers (Chrome, FF)
-# TODO - CONSIDER SCENARIO WHERE THE QUEUE IS TEMPORARILY EMPTY, THEN MORE USERS COME
-
-
-def test_application_flow(driver):
+def test_application_flow_3(driver):
 
     #################################################################################
     print('\n#   LOGIN PAGE    ####################\n')
     #################################################################################
 
-    username = 'mp'
-    password = os.getenv('MATJAZ_STAGING_PASSWORD')
+    username = 'boston5'        # TODO - abstract this so it can be any username, password
+    password = os.getenv("BOSTONS_PASSW")
+
 
     # Creating an instance of class and passing the current driver instance
     login = Login(driver)
     print('Loading login page...')
+
     # Verify that we're on login page
     assert driver.title == Locator.login_page_title
     print('Titles match.')
+
     assert driver.current_url == WebDriverFactory.BASE_URL
     print('URL successfully points to Login page -', driver.current_url)
 
@@ -76,13 +68,21 @@ def test_application_flow(driver):
     print('\n#   FOYER PAGE    ####################\n')
     #################################################################################
     foyer = Foyer(driver)
+    foyer.click_process_user()
 
-    # add participants to the queue using session codes
-    for sescode in participants_sescodes_dict['participants']:
-        # options = webdriver.ChromeOptions()
-        path_to_geckodriver = '/home/m/applications/geckodriver'
-        driver2 = webdriver.Firefox(executable_path=path_to_geckodriver)
-        driver2.maximize_window()
-        queue_url = f'https://vt.clairvision.org/vsstaging/vsMain?tg=Tg_10950&pk=2166&sescode={sescode}&room_type=1'  # TODO does tg needs to be that? what is tg?
-        driver2.get(queue_url)
-    time.sleep(3600)
+    #################################################################################
+    print('\n#   PORTAL PAGE    ####################\n')
+    #################################################################################
+    portal = Portal(driver)
+
+    # loop here to process multiple particpants
+    for participant in range(10):
+        driver.implicitly_wait(5)
+        time.sleep(3)
+        portal.click_grant_access()
+        time.sleep(3)
+        print('Processed participant: ', participant)
+
+    time.sleep(3)
+    foyer.save_screenshot()
+    time.sleep(60)
