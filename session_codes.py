@@ -24,7 +24,7 @@ print('LOGIN SESCODE ', login_sescode)
 # get participants' session codes
 tg = 'Tg_12000'
 room_pk = 2166
-number_of_participants = 30
+number_of_participants = 10
 
 codes = get_participant_sescodes(
     url='https://vt.clairvision.org/vsstaging/vsMain',
